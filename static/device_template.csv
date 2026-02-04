@@ -1,0 +1,4 @@
+serial_number,device,room,cabinet,u_position,owner
+UPS-A1-8892,UPS,A1,A1-01,16U,核心供电
+AC-B2-2201,空调主机,B2,B2-温控,机柜外,环境控制
+PDU-C3-1108,配电柜,C3,C3-02,24U,动力配电
