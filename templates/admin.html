@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>机房维修系统 · 后台</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Datacenter Maintenance</p>
+          <h1>后台管理中心</h1>
+          <p class="subtitle">
+            维护权限、维修顺序策略与设备位置模板，供维修站工程师独立查询使用。
+          </p>
+          <div class="nav">
+            <a href="/engineer">前往工程师查询</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>设备台账概览</h2>
+          <div class="kpi">
+            <div>
+              <span class="label">已录入设备</span>
+              <span class="value" id="device-count">-</span>
+            </div>
+            <div>
+              <span class="label">模板更新时间</span>
+              <span class="value" id="template-time">-</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>后台权限配置</h2>
+          <p class="muted">面向管理员与班组长的权限设定，支持扩展角色与权限条目。</p>
+          <div class="list" id="permission-list"></div>
+          <form class="form" id="permission-form">
+            <input type="text" name="role" placeholder="新增角色" required />
+            <input type="text" name="permissions" placeholder="权限，用逗号分隔" required />
+            <button type="submit">添加角色权限</button>
+          </form>
+        </article>
+
+        <article class="panel">
+          <h2>维修顺序策略</h2>
+          <p class="muted">支持按优先级、计划时间或设备健康评分排序。</p>
+          <div class="order" id="order-info"></div>
+          <form class="form" id="order-form">
+            <input type="text" name="strategy" placeholder="策略描述" required />
+            <input type="text" name="notes" placeholder="备注" required />
+            <button type="submit">更新策略</button>
+          </form>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>设备位置模板上传</h2>
+        <p class="muted">
+          请使用模板 CSV 上传设备序列号与位置（机房 / 机柜 / U 位）。工程师端查询即使用该台账。
+        </p>
+        <div class="template-actions">
+          <a class="link" href="/static/device_template.csv" download>下载模板</a>
+          <span class="muted">字段：serial_number, device, room, cabinet, u_position, owner</span>
+        </div>
+        <form class="form" id="device-form">
+          <input type="file" name="file" accept=".csv" required />
+          <button type="submit">上传模板</button>
+        </form>
+        <div class="table" id="device-table">
+          <div class="table-row header">
+            <span>序列号</span>
+            <span>设备</span>
+            <span>机房</span>
+            <span>机柜</span>
+            <span>U 位</span>
+            <span>归属</span>
+          </div>
+          <div id="device-list"></div>
+        </div>
+      </section>
+    </div>
+    <script src="/static/admin.js"></script>
+  </body>
+</html>

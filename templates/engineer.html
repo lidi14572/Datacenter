@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>机房维修系统 · 工程师</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Datacenter Maintenance</p>
+          <h1>工程师查询台</h1>
+          <p class="subtitle">
+            通过设备序列号快速定位机房、机柜与 U 位信息，维修任务可作为参考。
+          </p>
+          <div class="nav">
+            <a href="/admin">返回后台管理</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>今日任务</h2>
+          <div class="kpi">
+            <div>
+              <span class="label">今日任务</span>
+              <span class="value" id="task-count">-</span>
+            </div>
+            <div>
+              <span class="label">优先级 1</span>
+              <span class="value" id="priority-count">-</span>
+            </div>
+          </div>
+          <button class="primary" id="refresh">刷新任务</button>
+        </div>
+      </header>
+
+      <section class="panel">
+        <h2>序列号定位</h2>
+        <p class="muted">输入设备序列号查询机房、机柜、U 位与设备归属信息。</p>
+        <form class="form" id="lookup-form">
+          <input type="text" name="serial" placeholder="例如 UPS-A1-8892" required />
+          <button type="submit">查询</button>
+        </form>
+        <div class="lookup-result" id="lookup-result"></div>
+      </section>
+
+      <section class="panel">
+        <h2>今日维修任务（参考）</h2>
+        <p class="muted">维修任务不是强制执行，主要供维修站工程师参考。</p>
+        <div class="table">
+          <div class="table-row header">
+            <span>任务编号</span>
+            <span>机房</span>
+            <span>设备</span>
+            <span>序列号</span>
+            <span>优先级</span>
+            <span>负责人</span>
+            <span>状态</span>
+          </div>
+          <div id="task-list"></div>
+        </div>
+      </section>
+    </div>
+    <script src="/static/engineer.js"></script>
+  </body>
+</html>
